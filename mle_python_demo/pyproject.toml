@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "walmart-nextech-pkg-demo"
+version = "0.0.8"
+description = "Demo Project"
+authors = ["Your Name <you@example.com>"]
+packages = [{include = "pkg_demo"}]
+
+[[tool.poetry.source]]
+name = "nextech-artifactory"
+url = "https://pypi.ci.artifacts.walmart.com/artifactory/api/pypi/nextech-pypi/simple/"
+default = false
+secondary = true
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+pandas = "^1.5.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+flake8 = "^3.9.2"
+mypy = "^0.910"
+click = "7.1.2"
+black = "^21.6b0"
+flake8-docstrings = "^1.6.0"
+isort = "^5.9.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
+'''
